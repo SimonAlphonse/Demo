@@ -4,9 +4,9 @@ namespace OrderService
 {
     public class OrderManager
     {
-        private readonly OrderContext _context;
+        private readonly OrderDbContext _context;
 
-        public OrderManager(OrderContext context)
+        public OrderManager(OrderDbContext context)
         {
             _context = context;
         }

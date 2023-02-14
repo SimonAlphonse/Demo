@@ -7,7 +7,7 @@ namespace OrderService
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-            builder.Services.AddDbContext<OrderContext>();
+            builder.Services.AddDbContext<OrderDbContext>();
             builder.Services.AddScoped<OrderManager>();
             
             builder.Services.AddControllers();
@@ -34,7 +34,7 @@ namespace OrderService
                 var services = scope.ServiceProvider;
                 try
                 {
-                    var context = services.GetRequiredService<OrderContext>();
+                    var context = services.GetRequiredService<OrderDbContext>();
                     context.Database.EnsureCreated();
                 }
                 catch (Exception ex)
