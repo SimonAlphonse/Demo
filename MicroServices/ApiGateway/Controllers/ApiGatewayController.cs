@@ -15,6 +15,7 @@ public class ApiGatewayController : ControllerBase
     public async Task<IActionResult> GetOrder(int orderId)
     {
         var client = _clientFactory.CreateClient("OrderService");
+        
         var response = client.GetAsync($"Order/{orderId}").Result;
         if (response.IsSuccessStatusCode)
         {

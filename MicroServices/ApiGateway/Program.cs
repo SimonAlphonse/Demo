@@ -10,8 +10,6 @@ namespace ApiGateway
     {
         public static void Main(string[] args)
         {
-            ServicePointManager.ServerCertificateValidationCallback += (_, _, _, _) => true;
-
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
@@ -30,11 +28,12 @@ namespace ApiGateway
 
             builder.Services.AddHttpClient("OrderService", client =>
             {
-                client.BaseAddress = new Uri("https://localhost:32812/api/");
+                client.BaseAddress = new Uri("https://localhost:8001/api/");
             });
+
             builder.Services.AddHttpClient("UserService", client =>
             {
-                client.BaseAddress = new Uri("https://localhost:32811/api/");
+                client.BaseAddress = new Uri("https://localhost:8002/api/");
             });
 
             var app = builder.Build();
