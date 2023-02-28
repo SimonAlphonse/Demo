@@ -12,19 +12,19 @@ namespace UserService
             _context = context;
         }
 
-        public async Task<List<User>> GetAllUsers()
+        public async Task<List<User>> GetUsers()
         {
             return await _context.Users.AsNoTracking().ToListAsync();
         }
 
         public async Task<User> GetUser(int id)
         {
-            return await _context.Users.AsNoTracking().FirstOrDefaultAsync(u => u.Id == id) ?? new();
+            return await _context.Users.AsNoTracking().FirstOrDefaultAsync(u => u.Id == id);
         }
 
         public async Task<User> GetUserByUsername(string name)
         {
-            return await _context.Users.AsNoTracking().FirstOrDefaultAsync(u => u.Name == name) ?? new();
+            return await _context.Users.AsNoTracking().FirstOrDefaultAsync(u => u.Name == name);
         }
 
         public async Task<User> AddUser(User user)
@@ -44,10 +44,9 @@ namespace UserService
         public async Task<User> DeleteUser(int id)
         {
             var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == id);
-            if (user == null) return new();
-            _context.Users.Remove(user);
+            _context.Users.Remove(user!);
             await _context.SaveChangesAsync();
-            return user;
+            return user!;
         }
     }
 }

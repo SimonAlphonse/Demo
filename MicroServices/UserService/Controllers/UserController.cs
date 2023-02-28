@@ -1,8 +1,5 @@
-using System;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
 using UserService.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace UserService.UserService.Controllers
 {
@@ -17,10 +14,10 @@ namespace UserService.UserService.Controllers
             _userManager = userManager;
         }
 
-        [HttpGet]
-        public async Task<IActionResult> GetAllUsers()
+        [HttpGet("[action]")]
+        public async Task<IActionResult> GetUsers()
         {
-            return Ok(await _userManager.GetAllUsers());
+            return Ok(await _userManager.GetUsers());
         }
 
         [HttpGet("{id}")]
@@ -40,7 +37,6 @@ namespace UserService.UserService.Controllers
         public async Task<IActionResult> UpdateUser(int id, User user)
         {
             if (id != user.Id) return BadRequest();
-
             return Ok(await _userManager.UpdateUser(user));
         }
 
