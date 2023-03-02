@@ -1,10 +1,10 @@
-using UserService;
+using CustomerService;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddDbContext<UserDbContext>();
-builder.Services.AddScoped<UserManager>();
+builder.Services.AddDbContext<CustomerDbContext>();
+builder.Services.AddScoped<CustomerManager>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -29,7 +29,7 @@ using (var scope = app.Services.CreateScope())
     var services = scope.ServiceProvider;
     try
     {
-        var context = services.GetRequiredService<UserDbContext>();
+        var context = services.GetRequiredService<CustomerDbContext>();
         context.Database.EnsureCreated();
     }
     catch (Exception ex)
