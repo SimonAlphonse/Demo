@@ -1,5 +1,10 @@
 version: '3.4'
 
+networks:
+
+  backend_network:
+    driver: bridge
+
 services:
 
   customerservice:
@@ -40,7 +45,3 @@ services:
     container_name: apigateway
     networks:
       - backend_network
-
-networks:
-  backend_network:
-    driver: bridge
