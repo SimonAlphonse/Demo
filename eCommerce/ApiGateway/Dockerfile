@@ -6,16 +6,16 @@ EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
-COPY ["CustomerService/CustomerService.csproj", "CustomerService/"]
-RUN dotnet restore "CustomerService/CustomerService.csproj"
+COPY ["ApiGateway/ApiGateway.csproj", "ApiGateway/"]
+RUN dotnet restore "ApiGateway/ApiGateway.csproj"
 COPY . .
 WORKDIR "/src/."
-RUN dotnet build "CustomerService/CustomerService.csproj" -c Release -o /app/build
+RUN dotnet build "ApiGateway/ApiGateway.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "CustomerService/CustomerService.csproj" -c Release -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "ApiGateway/ApiGateway.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "CustomerService.dll"]
+ENTRYPOINT ["dotnet", "ApiGateway.dll"]

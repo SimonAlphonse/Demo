@@ -1,7 +1,7 @@
 version: '3.4'
 
 services:
-  
+
   customerservice:
     build:
       context: .
@@ -9,10 +9,12 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
     ports:
-      - 5002:80
+      - 5001:80
     image: customerservice
     container_name: customerservice
-    
+    networks:
+      - backend_network
+
   orderservice:
     build:
       context: .
@@ -20,8 +22,25 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
     ports:
-      - 5001:80
+      - 5002:80
     image: orderservice
     container_name: orderservice
+    networks:
+      - backend_network
 
-  
+  apigateway:
+    build:
+      context: .
+      dockerfile: ApiGateway/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - 5003:80
+    image: apigateway
+    container_name: apigateway
+    networks:
+      - backend_network
+
+networks:
+  backend_network:
+    driver: bridge
