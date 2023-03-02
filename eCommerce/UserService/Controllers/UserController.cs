@@ -30,7 +30,7 @@ namespace UserService.UserService.Controllers
         public async Task<IActionResult> AddUser(User user)
         {
             var addedUser = await _userManager.AddUser(user);
-            return CreatedAtAction("GetUser", new { id = addedUser.Id }, addedUser);
+            return CreatedAtAction(nameof(GetUser), new { id = addedUser.Id }, addedUser);
         }
 
         [HttpPut("{id}")]
