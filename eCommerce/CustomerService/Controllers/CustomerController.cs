@@ -1,7 +1,7 @@
 using CustomerService.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace CustomerService.CustomerService.Controllers
+namespace CustomerService.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]

@@ -9,8 +9,7 @@
     <DockerServiceName>apigateway</DockerServiceName>
   </PropertyGroup>
   <ItemGroup>
-    <None Include="docker-compose.yml" /> <!-- docker-compose up (!! default command to run docker-compose.yml file)-->
-    <None Include="docker-compose.prod.yml" /> <!--docker-compose -f docker-compose.prod.yml up (!! to explicitly execute yml file with different name)-->
+    <None Include="docker-compose.prod.yml" />
     <None Include=".dockerignore" />
   </ItemGroup>
 </Project>

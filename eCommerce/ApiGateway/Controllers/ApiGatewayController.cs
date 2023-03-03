@@ -18,7 +18,7 @@ namespace ApiGateway.Controllers
         {
             var client = _clientFactory.CreateClient("OrderService");
 
-            var response = client.GetAsync($"Order/").Result;
+            var response = client.GetAsync($"Order/").Result; // !! Trailing slash is mandatory
             if (response.IsSuccessStatusCode)
             {
                 var content = await response.Content.ReadAsStringAsync();
