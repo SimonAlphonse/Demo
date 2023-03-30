@@ -1,17 +1,17 @@
 
 I have added double exclamation `!!` mark in the code where special attention is needed, including `.csproj` and `.dcproj`
 
-Build :- docker build -t <image> .
+To build a docker image :- `docker build -t <image-name:version> .`
 
-• Example :- 
-	○ Latest --> docker build -t myservice .
-	○ Specific version --> docker build -t myservice:1.0.0.000 .
+* Example :-
+	* Latest --> `docker build -t myservice .`
+	* Specific version --> `docker build -t myservice:1.0.0.000 .`
 
-Run :- docker run -p <port>:80 <image>
+To run the docker image in a container :- `docker run -p <port>:80 <image-name:version>`
 
-• Example :- 
-	○ Latest --> docker run -p 5001:80 myservice
-   ○ Specific version --> docker run -p 5001:80 myservice:1.0.0.000
+* Example :-
+	* Latest --> `docker run -p 5001:80 myservice`
+	* Specific version --> `docker run -p 5001:80 myservice:1.0.0.000`
 
 Tips :-
 
