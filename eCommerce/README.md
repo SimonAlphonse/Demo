@@ -1,7 +1,20 @@
 
 I have added double exclamation `!!` mark in the code where special attention is needed, including `.csproj` and `.dcproj`
 
+Build :- docker build -t <image> .
+
+• Example :- 
+	○ Latest --> docker build -t myservice .
+	○ Specific version --> docker build -t myservice:1.0.0.000 .
+
+Run :- docker run -p <port>:80 <image>
+
+• Example :- 
+	○ Latest --> docker run -p 5001:80 myservice
+   ○ Specific version --> docker run -p 5001:80 myservice:1.0.0.000
+
 Tips :-
+
 1. use `http://<image-name>/` instead of `http://localhost:5003/` to establish http client.\
    then only the communication between multi-containers will work seamlessly.\
    example : `http://customerservice/`
